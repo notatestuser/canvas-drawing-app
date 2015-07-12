@@ -12,10 +12,12 @@ var STATE_DRAGGING = 'dragging';
 var STATE_RESIZING = 'resizing';
 var STATE_NONE = 'none';
 
+var CANVAS_TEXT_FONT  = 'Helvetica,sans-serif';
+
 // please excuse this - it avoids an image load wait/callback when drawing the canvas background
 var PATTERN_IMAGE_SRC = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAD1BMVEX////e3t7b29vV1dXQ0NAEqASxAAAAG0lEQVQI12MQBAIGIKCQQboGRRjDCMZwBgoBADakBLSSaB4SAAAAAElFTkSuQmCC';
-
-var CANVAS_TEXT_FONT  = 'Helvetica,sans-serif';
+var PATTERN_IMAGE_EL = new Image();  // init once here for optimisation
+PATTERN_IMAGE_EL.src = PATTERN_IMAGE_SRC;
 
 // ----- //
 
@@ -267,10 +269,9 @@ App.CanvasElementComponent = Ember.Component.extend({
     _empty: function() {
         var element = this.get('element');
         var ctx = this.get('ctx');
+        var pattern;
         if ( ! ctx) return;
-        var img = new Image();
-        img.src = PATTERN_IMAGE_SRC;
-        var pattern = ctx.createPattern(img, 'repeat');
+        pattern = ctx.createPattern(PATTERN_IMAGE_EL, 'repeat');
         ctx.fillStyle = pattern;
         ctx.fillRect(0, 0, element.width, element.height);
     },
