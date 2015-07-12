@@ -110,7 +110,7 @@ App.CanvasView = Ember.View.extend({
         tap: function(ev) {
             var tapItem = this._detectItemHit.call(this, ev);
             if ( ! tapItem || tapItem.type !== 'text') return;
-            tapItem.text = window.prompt('Enter the new text for this item', tapItem.text);
+            tapItem.text = window.prompt('Enter the new text for this item', tapItem.text) || tapItem.text;
             this.get('controller').send('handleItemChanged');
         },
         press: function(ev) {
