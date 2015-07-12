@@ -295,7 +295,6 @@ App.CanvasElementComponent = Ember.Component.extend({
                 this._drawCurrentSelectionBox(item.x, item.y, dimensions.w, dimensions.h);
             }
         }, this);
-        ctx.save();
         this._isTicking = false;
     },
     _drawText: function(x, y, text, size) {
