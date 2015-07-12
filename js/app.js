@@ -7,7 +7,7 @@
 ;(function(){
 
 var RESIZE_HANDLE_SIZE_PX = 16;
-i
+
 var STATE_DRAGGING = 'dragging';
 var STATE_RESIZING = 'resizing';
 var STATE_NONE = 'none';
