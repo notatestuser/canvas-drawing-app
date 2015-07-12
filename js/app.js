@@ -121,7 +121,7 @@ App.CanvasView = Ember.View.extend({
             if ( ! dragItem && ! resizeItem) {  // no hit
                 return this.get('controller').send('clearSelection');
             }
-            this.get('controller').send('handleItemSelected', dragItem);
+            this.get('controller').send('handleItemSelected', dragItem || resizeItem);
 
         },
         panstart: function(ev) {  // hit detect
