@@ -53,8 +53,8 @@ App.IndexController = Ember.ArrayController.extend({
             var items = this.get('model');
             items.push({
                 type: 'square',
-                x: 16, y: 16,
-                w: 64, h: 64
+                x: 16,  y: 16,
+                w: 128, h: 128
             });
             this.set('model', items);
             this._incrementUpdateSeq.call(this);
