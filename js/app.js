@@ -160,7 +160,7 @@ App.CanvasView = Ember.View.extend({
                 var resizeItemStartSize = this.get('resizeItemStartSize');
                 var resizeUnits = Math.max(ev.deltaX, ev.deltaY);
                 if (resizeItem.size) {
-                    resizeItem.size = Math.max(0, resizeItemStartSize.size + resizeUnits);
+                    resizeItem.size = Math.max(1, resizeItemStartSize.size + resizeUnits);
                 } else {
                     resizeItem.w = resizeItem.h = Math.max(0, resizeItemStartSize.w + resizeUnits);
                 }
