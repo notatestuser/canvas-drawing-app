@@ -7,7 +7,7 @@
 ;(function(){
 
 var RESIZE_HANDLE_SIZE_PX = 16;
-
+i
 var STATE_DRAGGING = 'dragging';
 var STATE_RESIZING = 'resizing';
 var STATE_NONE = 'none';
@@ -219,15 +219,15 @@ App.CanvasView = Ember.View.extend({
                 x: ev.pointers[0].pageX - ev.pointers[0].target.offsetLeft,
                 y: ev.pointers[0].pageY - ev.pointers[0].target.offsetTop
             };
-        } else if (typeof ev.srcEvent.layerX === 'number') {
-            cursor = {
-                x: ev.srcEvent.layerX,
-                y: ev.srcEvent.layerY
-            };
-        } else {
+        } else if (typeof ev.srcEvent.offsetX === 'number') {
             cursor = {
                 x: ev.srcEvent.offsetX,
                 y: ev.srcEvent.offsetY
+            };
+        } else {
+            cursor = {
+                x: ev.srcEvent.layerX,
+                y: ev.srcEvent.layerY
             };
         }
         return detectHit(cursor, x, y, w, h);
