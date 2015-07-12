@@ -28,8 +28,12 @@
     </head>
     <body class="drawapp">
         <script type="text/x-handlebars">
-            <h1>Draw Something!</h1>
-            {{outlet}}
+            <header>
+                <h1>Place some shapes!</h1>
+            </header>
+            <main>
+                {{outlet}}
+            </main>
         </script>
 
         <script type="text/x-handlebars" data-template-name="index">
@@ -37,21 +41,32 @@
             {{view 'toolbox'}}
         </script>
 
-        <script type="text/x-handlebars" data-template-name="canvas">
-            <section class="drawapp-canvas-section">
-                <canvas class="drawapp-canvas"></canvas>
+        <script type="text/x-handlebars" data-template-name="views/canvas">
+            <section {{bind-attr class=':drawapp-canvas-section state'}}>
+                {{canvas-element items=model updateSeq=updateSeq}}
             </section>
         </script>
 
-        <script type="text/x-handlebars" data-template-name="toolbox">
+        <script type="text/x-handlebars" data-template-name="views/toolbox">
             <section class="drawapp-toolbox-section">
-                <div class="drawapp-toolbox-button add-text" {{action 'addText'}}>
-                    add text
+                <div class="drawapp-toolbox-control clickable"
+                        {{action 'addSquare'}}>
+                    Add a square
                 </div>
-                <div class="drawapp-toolbox-button add-square" {{action 'addSquare'}}>
-                    add square
+                <div class="drawapp-toolbox-control clickable"
+                        {{action 'addText'}}>
+                    Add some text
                 </div>
+                {{input
+                    class="drawapp-toolbox-control readout"
+                    value=modelJSON
+                    readonly=true}}
             </section>
+        </script>
+
+        <script type="text/x-handlebars"
+                data-template-name="components/canvas-element">
+            You are using an old browser. Please update it!
         </script>
     </body>
 </html>
