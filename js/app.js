@@ -198,7 +198,7 @@ App.CanvasView = Ember.View.extend({
             return this._isPointerWithinBounds.call(
                 this, ev,
                 item.x + item._dimensions.w + RESIZE_HANDLE_SIZE_PX / 2,
-                item.y + item._dimensions.h + 8,
+                item.y + item._dimensions.h + RESIZE_HANDLE_SIZE_PX / 2,
                 RESIZE_HANDLE_SIZE_PX,
                 RESIZE_HANDLE_SIZE_PX);
         }, this);
